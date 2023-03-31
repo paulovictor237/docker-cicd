@@ -1,13 +1,20 @@
-FROM node:18-alpine
-ENV PORT=3000
+# Use an official Node runtime as a parent image
+FROM node:latest
 
+# Set the working directory to /app
 WORKDIR /app
 
-COPY package.json ./
+# Copy package.json and package-lock.json to the working directory
+COPY package*.json ./
+
+# Install the dependencies
 RUN npm install
-COPY . . 
 
+# Copy the rest of the application code to the working directory
+COPY . .
 
-EXPOSE $PORT
-# CMD  npm run dev
-CMD  npm run build && npm run start
+# Expose port 3000 for the Node.js app to listen on
+EXPOSE 3333
+
+# Start the Node.js application
+CMD ["npm","run", "dev"]

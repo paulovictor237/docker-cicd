@@ -26,5 +26,5 @@ app.get("/peve", async (request, reply) => {
 });
 
 app.listen({ host: "0.0.0.0", port }).then(() => {
-  console.log(`Server on post:${port}`);
+  console.log(`Server on port:${port}`);
 });
